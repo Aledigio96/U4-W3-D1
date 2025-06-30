@@ -59,10 +59,10 @@ WHERE fatture.importo < 1000;
 
 Esercizio6
 SELECT 
-fatture.numero_fattura,
+fatture.numerofatture,
   fatture.importo,
   fatture.iva,
-  fatture.data_fattura,
+  fatture.datafattura,
   fornitori.denominazione
 FROM fatture
 JOIN fornitori
