@@ -1,0 +1,76 @@
+INSERT INTO clienti (nome,cognome,annodinascita,regioneresidenza)
+VALUES('Mario','Sezze',1999,'Lazio');
+VALUES('Gina','Lollobrigida',1982,'Campania');
+VALUES('Damiano','Faina', 1983, 'Lazio');
+
+
+
+INSERT INTO prodotti(descrizione,inproduzione,incommercio,dataattivazione,datadisattivazione)
+VALUES('telefono incredibile',
+  TRUE,
+  TRUE,
+  '2024-01-15',
+  '2024-01-15');
+
+
+INSERT INTO fornitori (
+   denominazione,
+  regioneresidenza
+)
+VALUES
+  ( 'Forniture Elettroniche Srl', 'Lombardia'),
+  ( 'TecnoDistribuzioni Spa', 'Lazio');
+
+
+INSERT INTO fatture (
+  tipologia,
+  importo,
+  iva,
+  idcliente,
+  datafattura,
+  numerofornitore
+)
+VALUES
+  ( 'vendita', 850.50, 20, 1, '2025-06-01', 1),   
+  ( 'vendita', 950.00, 20, 7, '2025-06-05', 2),   
+  ( 'servizio', 1500.00, 20, 8, '2025-06-10', 1);
+
+
+
+Esercizio1
+SELECT * FROM clienti WHERE nome='Mario'
+
+Esercizio2
+SELECT nome,cognome FROM clienti WHERE annodinascita=1982
+
+Esercizio3
+SELECT iva FROM fatture WHERE iva=20
+
+Esercizio4
+SELECT * FROM prodotti WHERE EXTRACT(YEAR FROM dataattivazione) = 2017
+AND (inproduzione = TRUE OR incommercio= TRUE)
+
+Esercizio5
+SELECT * FROM fatture 
+JOIN clienti 
+ON fatture.idcliente= cliente.numerocliente
+WHERE fatture.importo < 1000
+
+Esercizio6
+SELECT 
+fatture.numero_fattura,
+  fatture.importo,
+  fatture.iva,
+  fatture.data_fattura,
+  fornitori.denominazione
+FROM fatture
+JOIN fornitori
+ON fatture.numerofornitore=fornitori.numerofornitore
+
+Esercizio7
+SELECT
+  EXTRACT(YEAR FROM fatture.datafattura),
+  COUNT(*)
+FROM fatture
+WHERE fatture.iva = 20
+GROUP BY EXTRACT(YEAR FROM fatture.datafattura)
