@@ -51,10 +51,11 @@ SELECT * FROM prodotti WHERE EXTRACT(YEAR FROM dataattivazione) = 2017
 AND (inproduzione = TRUE OR incommercio= TRUE)
 
 Esercizio5
-SELECT * FROM fatture 
-JOIN clienti 
-ON fatture.idcliente= cliente.numerocliente
-WHERE fatture.importo < 1000
+SELECT *
+FROM fatture
+JOIN clienti
+  ON fatture.idcliente = clienti.numerocliente
+WHERE fatture.importo < 1000;
 
 Esercizio6
 SELECT 
