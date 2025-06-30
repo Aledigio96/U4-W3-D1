@@ -44,7 +44,7 @@ Esercizio2
 SELECT nome,cognome FROM clienti WHERE annodinascita=1982
 
 Esercizio3
-SELECT iva FROM fatture WHERE iva=20
+SELECT numerofatture FROM fatture WHERE iva=20
 
 Esercizio4
 SELECT * FROM prodotti WHERE EXTRACT(YEAR FROM dataattivazione) = 2017
